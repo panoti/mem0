@@ -56,7 +56,7 @@ def get_default_configuration():
             "llm": {
                 "provider": "openai",
                 "config": {
-                    "model": "gpt-4o-mini",
+                    "model": "openai/gpt-5.2-chat",
                     "temperature": 0.1,
                     "max_tokens": 2000,
                     "api_key": "env:OPENAI_API_KEY"
@@ -65,7 +65,7 @@ def get_default_configuration():
             "embedder": {
                 "provider": "openai",
                 "config": {
-                    "model": "text-embedding-3-small",
+                    "model": "text-embedding-3-large",
                     "api_key": "env:OPENAI_API_KEY"
                 }
             },
