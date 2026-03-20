@@ -239,11 +239,13 @@ def get_default_memory_config():
             "host": os.environ.get('CHROMA_HOST'),
             "port": int(os.environ.get('CHROMA_PORT'))
         })
-    elif os.environ.get('QDRANT_HOST') and os.environ.get('QDRANT_PORT'):
+    elif os.environ.get('QDRANT_HOST') and os.environ.get('QDRANT_PORT') or os.environ.get('QDRANT_URL'):
         vector_store_provider = "qdrant"
+        qdrant_port = os.environ.get('QDRANT_PORT')
         vector_store_config.update({
             "host": os.environ.get('QDRANT_HOST'),
-            "port": int(os.environ.get('QDRANT_PORT')),
+            "port": int(qdrant_port) if qdrant_port else None,
+            "url": os.environ.get('QDRANT_URL'),
             "api_key": os.environ.get('QDRANT_API_KEY'),
         })
     elif os.environ.get('WEAVIATE_CLUSTER_URL') or (os.environ.get('WEAVIATE_HOST') and os.environ.get('WEAVIATE_PORT')):
